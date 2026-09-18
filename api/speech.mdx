@@ -1,19 +1,13 @@
 ---
 title: Speech (TTS)
-description: Text to speech, one path per language, one voice per language.
+description: Lemka TTS. One path per language.
 ---
 
-<Info>Status: **Planned**. No NE-language voice is live yet; the current demo TTS is an English fallback, not a NE voice.</Info>
-
-Mono TTS: one checkpoint, one speaker, per language. The language is in the path, not the body.
-
-### Endpoint pattern
+<Info>Status: **Live / on request**. Same endpoint for every Lemka voice. English Kokoro on `/speak` is not this product.</Info>
 
 ```
 POST https://<HOST>/v1/audio/speech/{language}
 ```
-
-`{language}` is one of the codes in the table below.
 
 ### Auth
 
@@ -25,8 +19,8 @@ Authorization: Bearer <API_KEY>
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `text` | string | Yes | Text to synthesise, in that language. |
-| `format` | string | No | Output container. Defaults to `wav`. |
+| `text` | string | Yes | Text in that language. |
+| `format` | string | No | Default `wav`. |
 
 ### Response
 
@@ -39,28 +33,4 @@ Authorization: Bearer <API_KEY>
 }
 ```
 
-### Errors
-
-See [Errors](/api/errors). A language returns `503 model_unavailable` until its voice is licensed and marked live below.
-
-### Language support
-
-| Path | Language | Status |
-|---|---|---|
-| `/v1/audio/speech/kha` | Khasi | Planned |
-| `/v1/audio/speech/grt` | Garo | Planned |
-| `/v1/audio/speech/trp` | Kokborok | Planned |
-| `/v1/audio/speech/lus` | Mizo | Planned |
-| `/v1/audio/speech/nag` | Nagamese | Planned |
-| `/v1/audio/speech/mni` | Meitei | Planned |
-
-Every path requires voice-talent consent before it is marked live. See [Licenses](/licenses/overview).
-
-### Example
-
-```bash
-curl -s https://<HOST>/v1/audio/speech/kha \
-  -H "Authorization: Bearer $API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"text":"khublei"}'
-```
+`{language}` is one of `kha`, `grt`, `trp`, `lus`, `nag`, `mni`. A code not on your image returns `503 model_unavailable`.

@@ -1,11 +1,9 @@
 ---
-title: Translate (MT)
-description: Text translation, one endpoint, source and target language codes.
+title: Translate
+description: Text translation. One endpoint, source and target codes.
 ---
 
-<Info>Status: **Beta** for Garo to English. Everything else is **Planned**.</Info>
-
-### Endpoint
+<Info>Status: **Live** for Khasi, Garo, and Mizo. Other pairs on request, same `POST /v1/translate`.</Info>
 
 ```
 POST https://<HOST>/v1/translate
@@ -21,9 +19,9 @@ Authorization: Bearer <API_KEY>
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `text` | string | Yes | Text to translate. |
-| `source` | string | Yes | Source language code. |
-| `target` | string | Yes | Target language code. |
+| `text` | string | Yes | Source text. |
+| `source` | string | Yes | Language code, e.g. `grt`. |
+| `target` | string | Yes | Language code, e.g. `eng`. |
 
 ### Response
 
@@ -31,34 +29,14 @@ Authorization: Bearer <API_KEY>
 {
   "source": "grt",
   "target": "eng",
-  "text": "translated text here",
+  "text": "translated text",
   "request_id": "req_8f2a1c"
 }
 ```
 
-<Warning>
-The Garo-English model is intentionally not quantised. Quantising it shifted meaning in internal tests, so a full-precision checkpoint runs even in the demo.
-</Warning>
-
-### Errors
-
-See [Errors](/api/errors). `invalid_language` fires if `source` or `target` is not licensed as a pair.
-
-### Language support
-
 | Pair | Status |
 |---|---|
-| Garo to English (`grt` to `eng`) | Live in demo |
-| Khasi | Planned |
-| Mizo | Planned |
-| Meitei | Planned |
-| Kokborok, Nagamese | No text checkpoint yet |
-
-### Example
-
-```bash
-curl -s https://<HOST>/v1/translate \
-  -H "Authorization: Bearer $API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"text":"nokgipa","source":"grt","target":"eng"}'
-```
+| Khasi ↔ English | Live |
+| Garo ↔ English | Live |
+| Mizo ↔ English | Live |
+| Other listed codes | On request |

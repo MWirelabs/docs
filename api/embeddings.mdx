@@ -1,11 +1,11 @@
 ---
 title: Embeddings
-description: Text embeddings, one endpoint, language-scoped.
+description: NE-Embed weights are live. HTTP on the licensed image.
 ---
 
-<Info>Status: **Planned**. Not live in any demo yet.</Info>
+<Info>Status: **Live** as [NE-Embed](https://huggingface.co/MWirelabs/ne-embed). HTTP `POST /v1/embeddings` ships on the licensed image, on request.</Info>
 
-### Endpoint
+Open weights: `MWirelabs/ne-embed` (CC-BY-4.0). Used by NE-Agent. Not a substitute for Lemka speech.
 
 ```
 POST https://<HOST>/v1/embeddings
@@ -21,43 +21,14 @@ Authorization: Bearer <API_KEY>
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `text` | string or array of strings | Yes | One string, or a batch. |
-| `language` | string | Yes | Language code. |
+| `input` | string or string[] | Yes | Text to embed. |
+| `language` | string | No | Language hint. |
 
 ### Response
 
 ```json
 {
-  "language": "kha",
-  "embedding": [0.0123, -0.0456],
-  "dims": 768,
+  "embeddings": [[0.01, 0.02]],
   "request_id": "req_8f2a1c"
 }
-```
-
-For a batch request, `embedding` becomes an array of vectors in input order.
-
-`dims` depends on the underlying checkpoint. Confirm the number on the model card before you build a fixed-size index.
-
-### Errors
-
-See [Errors](/api/errors).
-
-### Language support
-
-| Language | Status |
-|---|---|
-| Khasi | Planned |
-| Garo | Planned |
-| Mizo | Planned |
-| Meitei | Planned |
-| Kokborok, Nagamese | No text checkpoint yet |
-
-### Example
-
-```bash
-curl -s https://<HOST>/v1/embeddings \
-  -H "Authorization: Bearer $API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"text":"khublei","language":"kha"}'
 ```

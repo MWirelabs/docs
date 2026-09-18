@@ -1,16 +1,25 @@
 ---
 title: TTS
-description: One licensed voice per language.
+description: Lemka text-to-speech. One voice per language, one endpoint.
 ---
 
-Mono TTS: **one checkpoint and one speaker per language**, not a 50-voice mega model.
+**Lemka TTS** is the commercial synthesis stack. Language is in the path. Adding a language does not change the contract.
 
-**Languages (same as ASR):** Khasi, Garo, Kokborok, Mizo, Nagamese, Meitei.
+```
+POST /v1/audio/speech/{language}
+```
 
-| Status | What |
-|---|---|
-| Demo only | English Kokoro on the Garo `grt-en` path. Not a NE voice |
-| Planned | `POST /v1/audio/speech` with `language` + `voice` |
-| Required | Voice-talent consent before a language is marked live |
+| Path | Language | Status |
+|---|---|---|
+| `/v1/audio/speech/kha` | Khasi | Live / on request |
+| `/v1/audio/speech/grt` | Garo | Live / on request |
+| `/v1/audio/speech/trp` | Kokborok | Live / on request |
+| `/v1/audio/speech/lus` | Mizo | Live / on request |
+| `/v1/audio/speech/nag` | Nagamese | Live / on request |
+| `/v1/audio/speech/mni` | Meitei | Live / on request |
 
-Each live voice gets its own row on [Languages](/languages) when the image ships.
+`Live / on request` means the voice exists; it is enabled on your licensed image when that language is in the contract.
+
+<Note>
+`POST /speak` with English Kokoro is a leftover Garo demo. It is not Lemka TTS.
+</Note>

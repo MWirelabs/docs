@@ -1,19 +1,17 @@
 ---
 title: Languages
-description: What is live, on Hugging Face, or planned for ASR, TTS, and text.
+description: Lemka speech and text coverage.
 ---
 
-No sector packs (health, agri, legal). Three products only.
+No sector packs. Three products.
 
-| Language | ASR | TTS | Text |
-|---|---|---|---|
-| Khasi | Planned / weights | Planned (mono voice) | Planned / weights |
-| Garo | Live in demo API | Planned (mono voice) | Live translate in demo |
-| Kokborok | Planned / weights | Planned (mono voice) | Not planned |
-| Mizo | Planned / weights | Planned (mono voice) | Planned / weights |
-| Nagamese | Planned / weights | Planned (mono voice) | Not planned |
-| Meitei | Planned / weights | Planned (mono voice) | Planned / weights |
+| Language | Code | Lemka STT | Lemka TTS | Translate | Embeddings |
+|---|---|---|---|---|---|
+| Khasi | `kha` | Live / on request | Live / on request | Live | Live (NE-Embed) |
+| Garo | `grt` | Live / on request | Live / on request | Live | Live (NE-Embed) |
+| Kokborok | `trp` | Live / on request | Live / on request | On request | Live (NE-Embed) |
+| Mizo | `lus` | Live / on request | Live / on request | Live | Live (NE-Embed) |
+| Nagamese | `nag` | Live / on request | Live / on request | On request | Live (NE-Embed) |
+| Meitei | `mni` | Live / on request | Live / on request | On request | Live (NE-Embed) |
 
-<Info>
-Cells move from **planned → weights → live API** when that language is in the licensed image. English Kokoro TTS in the Garo demo is a fallback voice, not a NE voice.
-</Info>
+Open research checkpoints stay on Hugging Face. Licensed Docker + HTTP is Lemka (speech) plus the text models enabled on that image.

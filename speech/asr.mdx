@@ -1,34 +1,23 @@
 ---
-title: ASR - NE-ASR and LEMKA
-description: Open NE-ASR weights vs licensed LEMKA API.
+title: ASR
+description: Lemka speech-to-text. Licensed on-prem API.
 ---
 
-Two stacks. Do not mix them up.
+**Lemka STT** is the commercial recogniser. Same endpoint for every language; a new language is loaded on the licensed image, not a new route.
 
-<CardGroup cols={2}>
-  <Card title="NE-ASR" icon="download" href="/integrations/huggingface">
-    Open-source multilingual ASR on Hugging Face. Research and self-host.
-  </Card>
-  <Card title="LEMKA" icon="server" href="/api/transcriptions">
-    Commercial ASR. Higher accuracy. Ships only in a licensed on-prem image.
-  </Card>
-</CardGroup>
+Open research weights live on [Hugging Face](/integrations/huggingface) only. They are not this API.
 
-**Languages:** Khasi, Garo, Kokborok, Mizo, Nagamese, Meitei. Coverage depends on the release.
+**Languages:** Khasi, Garo, Kokborok, Mizo, Nagamese, Meitei.
 
-## LEMKA - API
+| Code | Language | Status |
+|---|---|---|
+| `kha` | Khasi | Live / on request |
+| `grt` | Garo | Live / on request |
+| `trp` | Kokborok | Live / on request |
+| `lus` | Mizo | Live / on request |
+| `nag` | Nagamese | Live / on request |
+| `mni` | Meitei | Live / on request |
 
-Licensed model. Not published as open weights.
+HTTP: [`POST /v1/audio/transcriptions`](/api/transcriptions).
 
-| Status | What |
-|---|---|
-| Live demo | Garo path on `POST /speak` |
-| Planned | `POST /v1/audio/transcriptions` on the licensed image |
-
-## NE-ASR - open weights
-
-[MWirelabs/ne-asr](https://huggingface.co/MWirelabs/ne-asr). Load with `transformers` or CTranslate2. No API key. **Not** the LEMKA checkpoint.
-
-<Warning>
-A licensed Docker image runs **LEMKA**. Pulling NE-ASR from Hugging Face does not give you the commercial API.
-</Warning>
+Legacy demo: [`POST /speak`](/api/speak) is a Garo-only hack, not the product surface.
