@@ -1,0 +1,14 @@
+---
+title: GET /health
+description: Liveness probe for the on-prem process.
+---
+
+Not a healthcare or sector API. Load balancers and Docker healthchecks call this.
+
+```bash
+curl -s http://<HOST>/health
+```
+
+```json
+{ "status": "ok" }
+```

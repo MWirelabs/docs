@@ -1,0 +1,64 @@
+---
+title: Translate (MT)
+description: Text translation, one endpoint, source and target language codes.
+---
+
+<Info>Status: **Beta** for Garo to English. Everything else is **Planned**.</Info>
+
+### Endpoint
+
+```
+POST https://<HOST>/v1/translate
+```
+
+### Auth
+
+```
+Authorization: Bearer <API_KEY>
+```
+
+### Request body
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `text` | string | Yes | Text to translate. |
+| `source` | string | Yes | Source language code. |
+| `target` | string | Yes | Target language code. |
+
+### Response
+
+```json
+{
+  "source": "grt",
+  "target": "eng",
+  "text": "translated text here",
+  "request_id": "req_8f2a1c"
+}
+```
+
+<Warning>
+The Garo-English model is intentionally not quantised. Quantising it shifted meaning in internal tests, so a full-precision checkpoint runs even in the demo.
+</Warning>
+
+### Errors
+
+See [Errors](/api/errors). `invalid_language` fires if `source` or `target` is not licensed as a pair.
+
+### Language support
+
+| Pair | Status |
+|---|---|
+| Garo to English (`grt` to `eng`) | Live in demo |
+| Khasi | Planned |
+| Mizo | Planned |
+| Meitei | Planned |
+| Kokborok, Nagamese | No text checkpoint yet |
+
+### Example
+
+```bash
+curl -s https://<HOST>/v1/translate \
+  -H "Authorization: Bearer $API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"text":"nokgipa","source":"grt","target":"eng"}'
+```

@@ -1,30 +1,100 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "MWire Labs Docs",
-  "description": "Documentation, licenses, and model guides for MWire Labs.",
+  "name": "MWire Labs",
+  "description": "On-prem speech, text, and language AI for Northeast India.",
   "colors": {
-    "primary": "#0F766E",
-    "light": "#14B8A6",
-    "dark": "#115E59"
+    "primary": "#EA580C",
+    "light": "#F97316",
+    "dark": "#111111"
+  },
+  "favicon": "/assets/favicon.png",
+  "logo": {
+    "light": "/assets/logo.png",
+    "dark": "/assets/logo.png"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Hugging Face",
+        "href": "https://huggingface.co/MWirelabs"
+      },
+      {
+        "label": "Website",
+        "href": "https://mwirelabs.com"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Request access",
+      "href": "mailto:connect@mwirelabs.com"
+    }
+  },
+  "seo": {
+    "metatags": {
+      "og:image": "/assets/logo.png"
+    }
   },
   "navigation": {
     "groups": [
       {
-        "group": "Start here",
-        "pages": ["index", "quickstart"]
+        "group": "Start",
+        "pages": [
+          "index",
+          "quickstart",
+          "languages",
+          "access"
+        ]
       },
       {
-        "group": "Models",
-        "pages": ["models/overview"]
+        "group": "Speech",
+        "pages": [
+          "speech/asr",
+          "speech/tts"
+        ]
       },
       {
-        "group": "Licenses",
-        "pages": ["licenses/overview"]
+        "group": "Text",
+        "pages": [
+          "text/overview"
+        ]
       },
       {
-        "group": "Research",
-        "pages": ["research"]
+        "group": "API",
+        "pages": [
+          "api/overview",
+          "api/conventions",
+          "api/transcriptions",
+          "api/speech",
+          "api/translate",
+          "api/embeddings",
+          "api/errors",
+          "api/rate-limits",
+          "api/changelog",
+          "api/health",
+          "api/speak"
+        ]
+      },
+      {
+        "group": "On-prem",
+        "pages": [
+          "on-prem/overview"
+        ]
+      },
+      {
+        "group": "Integrations",
+        "pages": [
+          "integrations/huggingface",
+          "integrations/sdk"
+        ]
+      },
+      {
+        "group": "Trust",
+        "pages": [
+          "trust/security",
+          "trust/compliance",
+          "licenses/overview"
+        ]
       }
     ]
   },

@@ -1,23 +1,42 @@
 ---
-title: MWire Labs Docs
-description: Models, licenses, and guides for Northeast India's language AI.
+title: NE-Stack docs
+description: On-prem ASR, per-language TTS, and limited text models for Northeast India.
 ---
 
-Region-first models and research from MWire Labs. These docs cover what we ship, how to use it, and how it is licensed.
+Region-first speech and text models. Weights and licensed Docker images run on your GPU. There is no public multi-tenant cloud.
 
-This site is documentation only. There is no public API.
-
-<CardGroup cols={2}>
-  <Card title="Models" href="/models/overview" icon="layer-group">
-    Kren-M, NE-BERT, NE-OCR, speech and translation models.
+<CardGroup cols={3}>
+  <Card title="Speech-to-text" icon="waveform" href="/speech/asr">
+    Multi ASR for Khasi, Garo, Kokborok, Mizo, Nagamese, Meitei.
   </Card>
-  <Card title="Licenses" href="/licenses/overview" icon="scale-balanced">
-    Terms for weights, data, and code.
+  <Card title="Text-to-speech" icon="volume-high" href="/speech/tts">
+    One voice per language. Licensed with the image.
   </Card>
-  <Card title="Quickstart" href="/quickstart" icon="bolt">
-    Run or cite a model in a few steps.
+  <Card title="Text" icon="language" href="/text/overview">
+    Khasi, Garo, Mizo, Meitei. Translate and embeddings. Limited.
   </Card>
-  <Card title="Research" href="/research" icon="book">
-    Papers, citations, and related work.
+  <Card title="On-prem" icon="server" href="/on-prem/overview">
+    Dockerised models. Data stays on the box.
+  </Card>
+  <Card title="HTTP API" icon="code" href="/api/overview">
+    Live demo routes now. Versioned `/v1` on request.
+  </Card>
+  <Card title="Request access" icon="envelope" href="/access">
+    Email connect@mwirelabs.com
   </Card>
 </CardGroup>
+
+## Pick a path
+
+<CardGroup cols={2}>
+  <Card title="Run weights" icon="download" href="/integrations/huggingface">
+    Hugging Face checkpoints for local inference.
+  </Card>
+  <Card title="Run the API" icon="terminal" href="/api/speak">
+    `GET /health` and `POST /speak` on a licensed box.
+  </Card>
+</CardGroup>
+
+<Note>
+The current HTTP demo is Garo-first (`POST /speak`). Multi-language `/v1` routes ship with a licensed on-prem image.
+</Note>

@@ -1,0 +1,32 @@
+---
+title: POST /speak
+description: Live Garo demo pipeline. ASR, optional MT, optional English TTS.
+---
+
+<Warning>
+Legacy, unversioned demo route. New integrations should use [Transcriptions](/api/transcriptions), [Speech](/api/speech), and [Translate](/api/translate) instead.
+</Warning>
+
+### Body
+
+```json
+{
+  "audio_b64": "<base64 audio>",
+  "direction": "grt-text" | "grt-en"
+}
+```
+
+| `direction` | Result |
+|---|---|
+| `grt-text` | Garo transcript only (`src_text`) |
+| `grt-en` | Garo transcript + English text + English WAV (`audio_b64`) |
+
+### Stack on the box
+
+- ASR: `MWirelabs/ne-asr` via CTranslate2 (int8)
+- MT: Garo↔English NLLB (fp16, do not quantise)
+- TTS: Kokoro English fallback
+
+<Warning>
+Demo builds may write input audio and transcripts under a log directory. Licensed production images default logging **off**.
+</Warning>

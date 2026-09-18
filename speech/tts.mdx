@@ -1,0 +1,16 @@
+---
+title: TTS
+description: One licensed voice per language.
+---
+
+Mono TTS: **one checkpoint and one speaker per language**, not a 50-voice mega model.
+
+**Languages (same as ASR):** Khasi, Garo, Kokborok, Mizo, Nagamese, Meitei.
+
+| Status | What |
+|---|---|
+| Demo only | English Kokoro on the Garo `grt-en` path. Not a NE voice |
+| Planned | `POST /v1/audio/speech` with `language` + `voice` |
+| Required | Voice-talent consent before a language is marked live |
+
+Each live voice gets its own row on [Languages](/languages) when the image ships.

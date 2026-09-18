@@ -1,0 +1,14 @@
+---
+title: Security
+description: On-prem posture, logging, and auth.
+---
+
+| Topic | Demo image | Licensed production |
+|---|---|---|
+| Auth | None | API key required |
+| CORS | Open (`*`) | Restrict origins |
+| Audio logs | May write files + transcripts | **Off by default** |
+| Network | May be open for a pilot | Bind to private NIC / localhost |
+| Training on your audio | No | No, unless a written addendum |
+
+Architecture: inference on **your** GPU. No requirement to send audio to MWire to use weights.

@@ -1,0 +1,23 @@
+---
+title: On-prem
+description: Licensed Docker image. Weights and audio stay on your machine.
+---
+
+This is the default deploy. Not a multi-tenant cloud.
+
+<Steps>
+  <Step title="License">
+    [Request access](/access). You receive an image tag and runbook, not a public registry browse.
+  </Step>
+  <Step title="GPU box">
+    NVIDIA GPU recommended for the full ASR + MT + TTS demo. CPU-only paths are called out per model.
+  </Step>
+  <Step title="Air-gap">
+    Pull once on a connected machine, checksum, copy the tarball. Inference does not need the internet.
+  </Step>
+  <Step title="Lock down">
+    Enable API key auth. Set audio logging off. Do not expose CORS `*` on a public NIC.
+  </Step>
+</Steps>
+
+**Data:** audio and text do not leave the premises unless you send them to MWire for a pilot. See [Security](/trust/security).

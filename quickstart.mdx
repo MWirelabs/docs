@@ -1,11 +1,34 @@
 ---
 title: Quickstart
-description: Get a MWire Labs model running locally.
+description: First inference from Hugging Face, or the on-prem API once approved.
 ---
 
-Weights are released on a limited basis. Start from the model card, then follow the Hugging Face repo.
-
-1. Open the [models overview](/models/overview).
-2. Pick one checkpoint.
-3. Follow the install notes on that model page.
-4. Check the [license](/licenses/overview) before any redistribution.
+<Steps>
+  <Step title="Request access">
+    Open models are on [Hugging Face](https://huggingface.co/MWirelabs). For the API image, [request access](/access) with your use case and languages. Approval is manual, not instant.
+  </Step>
+  <Step title="Local check (weights)">
+    ```bash
+    pip install -U transformers
+    ```
+    Then load the checkpoint named on the model page (ASR, BERT, or MT).
+  </Step>
+  <Step title="Get your API key">
+    Once approved, you receive an API key with the image tag and runbook. Every `/v1` route expects it as:
+    ```
+    Authorization: Bearer <API_KEY>
+    ```
+  </Step>
+  <Step title="Confirm the box is up">
+    ```bash
+    curl -s http://<HOST>/health
+    ```
+    Expected: `{ "status": "ok" }`. This is a liveness probe, not a healthcare API.
+  </Step>
+  <Step title="Read Conventions, then an endpoint">
+    [Conventions](/api/conventions) covers language codes and audio format. Then pick one: [Transcriptions](/api/transcriptions), [Speech](/api/speech), [Translate](/api/translate), [Embeddings](/api/embeddings).
+  </Step>
+  <Step title="Read the license">
+    Confirm terms on [Licenses](/licenses/overview) before any redistribution or wrapping.
+  </Step>
+</Steps>

@@ -1,0 +1,18 @@
+---
+title: Changelog
+description: Versioning policy and route history for /v1.
+---
+
+### Versioning policy
+
+Everything documented here lives under `/v1`. A breaking change to any route ships as `/v2`, not a silent change to `/v1`. Additive changes (new optional field, new language) do not bump the version.
+
+### History
+
+<Update label="v1 draft" description="Current">
+Initial `/v1` contract drafted for `transcriptions`, `speech`, `translate`, `embeddings`. Not yet shipped in a licensed image. See each endpoint's status label.
+</Update>
+
+<Update label="Pre-v1" description="Demo era">
+`POST /speak` (Garo-only, unversioned) served as the live demo path for the Google and MATI showcases. Still documented at [`/api/speak`](/api/speak), marked legacy.
+</Update>

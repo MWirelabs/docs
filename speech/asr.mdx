@@ -1,0 +1,16 @@
+---
+title: Multi ASR
+description: Speech-to-text for six Northeast languages.
+---
+
+One multilingual ASR family. Language hint at request time.
+
+**Languages:** Khasi, Garo, Kokborok, Mizo, Nagamese, Meitei.
+
+| Status | What |
+|---|---|
+| Live API | Garo path inside `POST /speak` |
+| Weights | See [Hugging Face](/integrations/huggingface) (`MWirelabs/ne-asr` and related) |
+| Planned | Versioned `POST /v1/audio/transcriptions` in the licensed image |
+
+No speaker-ID APIs in v1. Batch / base64 first. Streaming on request.

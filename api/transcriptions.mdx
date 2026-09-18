@@ -1,0 +1,65 @@
+---
+title: Transcriptions (ASR)
+description: Speech to text, one endpoint, six languages.
+---
+
+<Info>Status: **Planned**. Live today only via the legacy [`/speak`](/api/speak) Garo demo path.</Info>
+
+One multilingual ASR endpoint. Pass the language, get the transcript.
+
+### Endpoint
+
+```
+POST https://<HOST>/v1/audio/transcriptions
+```
+
+### Auth
+
+```
+Authorization: Bearer <API_KEY>
+```
+
+### Request body
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `audio_b64` | string | Yes | Base64 audio. See [Conventions](/api/conventions) for format. |
+| `language` | string | Yes | Language code, e.g. `kha`, `grt`. |
+| `format` | string | No | Input audio container hint. Defaults to `wav`. |
+
+No `diarize` or speaker-ID field in v1. Batch, single-file requests only. Streaming is on request, not in this contract.
+
+### Response
+
+```json
+{
+  "language": "grt",
+  "text": "transcribed text here",
+  "duration_sec": 12.4,
+  "request_id": "req_8f2a1c"
+}
+```
+
+### Errors
+
+See [Errors](/api/errors). `invalid_language` fires if the code is not one below or not licensed on your image.
+
+### Language support
+
+| Language | Status |
+|---|---|
+| Khasi | Planned |
+| Garo | Live (via legacy `/speak`, `grt-text` direction) |
+| Kokborok | Planned |
+| Mizo | Planned |
+| Nagamese | Planned |
+| Meitei | Planned |
+
+### Example
+
+```bash
+curl -s https://<HOST>/v1/audio/transcriptions \
+  -H "Authorization: Bearer $API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"audio_b64":"<base64>","language":"grt"}'
+```

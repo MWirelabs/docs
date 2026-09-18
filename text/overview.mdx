@@ -1,0 +1,17 @@
+---
+title: Text
+description: Limited text models. Khasi, Garo, Mizo, Meitei.
+---
+
+No Kokborok or Nagamese text API until those checkpoints exist.
+
+| Language | Translate | Embeddings / encoder | Chat |
+|---|---|---|---|
+| Khasi | Planned / weights | Planned / weights | Gated |
+| Garo | Live in demo (`grt-en`) | Planned / weights | Gated |
+| Mizo | Planned / weights | Planned / weights | Gated |
+| Meitei | Planned / weights | Planned / weights | Gated |
+
+Garo MT in the demo image is **not quantised**. Quantising that checkpoint shifted meaning in internal tests.
+
+Planned routes: `POST /v1/translate`, `POST /v1/embeddings`. Chat stays gated.

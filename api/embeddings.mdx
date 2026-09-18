@@ -1,0 +1,63 @@
+---
+title: Embeddings
+description: Text embeddings, one endpoint, language-scoped.
+---
+
+<Info>Status: **Planned**. Not live in any demo yet.</Info>
+
+### Endpoint
+
+```
+POST https://<HOST>/v1/embeddings
+```
+
+### Auth
+
+```
+Authorization: Bearer <API_KEY>
+```
+
+### Request body
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `text` | string or array of strings | Yes | One string, or a batch. |
+| `language` | string | Yes | Language code. |
+
+### Response
+
+```json
+{
+  "language": "kha",
+  "embedding": [0.0123, -0.0456],
+  "dims": 768,
+  "request_id": "req_8f2a1c"
+}
+```
+
+For a batch request, `embedding` becomes an array of vectors in input order.
+
+`dims` depends on the underlying checkpoint. Confirm the number on the model card before you build a fixed-size index.
+
+### Errors
+
+See [Errors](/api/errors).
+
+### Language support
+
+| Language | Status |
+|---|---|
+| Khasi | Planned |
+| Garo | Planned |
+| Mizo | Planned |
+| Meitei | Planned |
+| Kokborok, Nagamese | No text checkpoint yet |
+
+### Example
+
+```bash
+curl -s https://<HOST>/v1/embeddings \
+  -H "Authorization: Bearer $API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"text":"khublei","language":"kha"}'
+```

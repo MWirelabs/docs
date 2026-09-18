@@ -1,0 +1,23 @@
+---
+title: HTTP API
+description: Four endpoints, versioned under /v1, on your licensed host.
+---
+
+Not a public SaaS. Base URL is the host you license. No self-serve signup, see [Access](/access).
+
+Read [Conventions](/api/conventions) first, it covers language codes and audio format used by every endpoint below.
+
+| Method | Path | What | Status |
+|---|---|---|---|
+| `GET` | `/health` | Liveness probe | Live |
+| `POST` | `/v1/audio/transcriptions` | [Speech to text](/api/transcriptions) | Planned |
+| `POST` | `/v1/audio/speech/{language}` | [Text to speech](/api/speech) | Planned |
+| `POST` | `/v1/translate` | [Text translation](/api/translate) | Beta (Garo to English) |
+| `POST` | `/v1/embeddings` | [Text embeddings](/api/embeddings) | Planned |
+| `POST` | `/speak` | [Legacy Garo demo](/api/speak) | Live demo only |
+
+See [Errors](/api/errors) for the shared error shape and [Rate limits](/api/rate-limits) for throughput. [Changelog](/api/changelog) tracks what moves between planned, beta, and live.
+
+<Warning>
+The current `/speak` demo has no auth and open CORS. Licensed production images require an API key on every `/v1` route and disable audio logging by default.
+</Warning>
