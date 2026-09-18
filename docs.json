@@ -1,0 +1,37 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "MWire Labs Docs",
+  "description": "Documentation, licenses, and model guides for MWire Labs.",
+  "colors": {
+    "primary": "#0F766E",
+    "light": "#14B8A6",
+    "dark": "#115E59"
+  },
+  "navigation": {
+    "groups": [
+      {
+        "group": "Start here",
+        "pages": ["index", "quickstart"]
+      },
+      {
+        "group": "Models",
+        "pages": ["models/overview"]
+      },
+      {
+        "group": "Licenses",
+        "pages": ["licenses/overview"]
+      },
+      {
+        "group": "Research",
+        "pages": ["research"]
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/MWirelabs",
+      "linkedin": "https://www.linkedin.com/company/mwire-labs"
+    }
+  }
+}
