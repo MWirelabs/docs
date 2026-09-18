@@ -1,13 +1,18 @@
 ---
 title: Licenses
-description: Weights, Docker image, data, and voices.
+description: Weights vs licensed image. What you may and may not do.
 ---
 
-Do not assume Apache or MIT. Each checkpoint and the Docker image has its own terms.
+Do not assume Apache or MIT. The Docker API and Lemka checkpoints are not the HF cards.
 
-- **Weights**: see the Hugging Face model card.
-- **Licensed image**: contract + runbook. No redistribution of the API wrapper by default.
-- **TTS voices**: speaker consent required. A CC weight license does not grant voice cloning rights.
-- **Corpora**: community collection terms. Takedown via [access email](/access).
+| Asset | Where | Commercial use | Redistribute weights | On-prem API | Attribution |
+|---|---|---|---|---|---|
+| **Lemka STT / TTS** | Licensed image | Yes, under contract | No | Yes | Per contract |
+| **Licensed Docker + HTTP** | License pack | Yes, under contract | No (image) | Yes | Per contract |
+| **NE-Embed** | Hugging Face `MWirelabs/ne-embed` | See card (CC-BY-4.0) | Per card | Optional on image | Required if card says so |
+| **Other HF models** (NE-ASR, NE-BERT, NE-OCR, …) | Hugging Face | See each card | Per card | Not Lemka | Per card |
+| **TTS speaker voice** | In Lemka image | Only as licensed | No cloning / resale of the voice | Yes | Talent terms in pack |
 
-Until a card says otherwise: research and licensed internal use, no public SaaS wrap.
+A CC-BY weight license does not grant the right to wrap Lemka as a public SaaS or to clone a speaker.
+
+Until a card or contract says otherwise: research and licensed internal use. Takedown / questions: [connect@mwirelabs.com](mailto:connect@mwirelabs.com).

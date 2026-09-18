@@ -73,6 +73,7 @@
             "group": "Use",
             "pages": [
               "api/overview",
+              "api/authentication",
               "api/conventions",
               "api/transcriptions",
               "api/speech",
@@ -118,6 +119,7 @@
             "group": "Trust",
             "pages": [
               "trust/security",
+              "trust/data-lifecycle",
               "trust/compliance",
               "licenses/overview"
             ]

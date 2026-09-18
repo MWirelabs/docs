@@ -1,0 +1,15 @@
+---
+title: Data lifecycle
+description: What happens to audio and text on demo vs licensed images.
+---
+
+| Question | Demo (`/speak`) | Licensed production image |
+|---|---|---|
+| Is audio stored? | May write files under a log directory | **Off by default** |
+| Are transcripts stored? | May write `log.jsonl` | Off by default |
+| How long? | Until the operator deletes the disk | Customer-controlled if they enable logs |
+| Used for training? | No | No, unless a written addendum |
+| Where processed? | The box that runs the container | The customer’s premises |
+| Deletion | Delete the log directory | Customer deletes local logs; we hold nothing if data never left the box |
+
+On-prem means audio and text need not reach MWire at all. If you send files to us for a pilot, we keep them only for that pilot and delete on request: [connect@mwirelabs.com](mailto:connect@mwirelabs.com).

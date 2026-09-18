@@ -1,0 +1,21 @@
+---
+title: Authentication
+description: API keys on the licensed image. Demo /speak has none.
+---
+
+Licensed `/v1` routes require a key. The key is issued with the image, not from a public dashboard.
+
+```
+Authorization: Bearer <API_KEY>
+```
+
+Set `API_KEY` in the container environment. Rotate by asking us for a new key and replacing the env var. There are no scopes and no test-vs-prod key types in v1.
+
+| Status | Meaning |
+|---|---|
+| 401 `unauthorized` | Missing or bad key |
+| 403 `forbidden` | Key valid, not licensed for that route or language |
+
+<Warning>
+`GET /health` and the legacy `POST /speak` demo have **no auth**. Do not expose `/speak` on a public NIC.
+</Warning>
