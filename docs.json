@@ -36,64 +36,92 @@
     }
   },
   "navigation": {
-    "groups": [
+    "tabs": [
       {
-        "group": "Start",
-        "pages": [
-          "index",
-          "quickstart",
-          "languages",
-          "access"
+        "tab": "Product",
+        "icon": "layer-group",
+        "groups": [
+          {
+            "group": "Start",
+            "pages": [
+              "index",
+              "quickstart",
+              "languages",
+              "access"
+            ]
+          },
+          {
+            "group": "Speech",
+            "pages": [
+              "speech/asr",
+              "speech/tts"
+            ]
+          },
+          {
+            "group": "Text",
+            "pages": [
+              "text/overview"
+            ]
+          }
         ]
       },
       {
-        "group": "Speech",
-        "pages": [
-          "speech/asr",
-          "speech/tts"
+        "tab": "API",
+        "icon": "code",
+        "groups": [
+          {
+            "group": "Use",
+            "pages": [
+              "api/overview",
+              "api/conventions",
+              "api/transcriptions",
+              "api/speech",
+              "api/translate",
+              "api/embeddings"
+            ]
+          },
+          {
+            "group": "Ops",
+            "pages": [
+              "api/errors",
+              "api/rate-limits",
+              "api/changelog"
+            ]
+          },
+          {
+            "group": "Live demo",
+            "pages": [
+              "api/health",
+              "api/speak"
+            ]
+          }
         ]
       },
       {
-        "group": "Text",
-        "pages": [
-          "text/overview"
-        ]
-      },
-      {
-        "group": "API",
-        "pages": [
-          "api/overview",
-          "api/conventions",
-          "api/transcriptions",
-          "api/speech",
-          "api/translate",
-          "api/embeddings",
-          "api/errors",
-          "api/rate-limits",
-          "api/changelog",
-          "api/health",
-          "api/speak"
-        ]
-      },
-      {
-        "group": "On-prem",
-        "pages": [
-          "on-prem/overview"
-        ]
-      },
-      {
-        "group": "Integrations",
-        "pages": [
-          "integrations/huggingface",
-          "integrations/sdk"
-        ]
-      },
-      {
-        "group": "Trust",
-        "pages": [
-          "trust/security",
-          "trust/compliance",
-          "licenses/overview"
+        "tab": "Deploy",
+        "icon": "server",
+        "groups": [
+          {
+            "group": "On-prem",
+            "pages": [
+              "on-prem/overview"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": [
+              "integrations/huggingface",
+              "integrations/sdk"
+            ]
+          },
+          {
+            "group": "Trust",
+            "pages": [
+              "trust/security",
+              "trust/compliance",
+              "licenses/overview"
+            ]
+          }
         ]
       }
     ]
