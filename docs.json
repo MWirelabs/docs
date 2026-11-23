@@ -82,6 +82,12 @@
             ]
           },
           {
+            "group": "Guides",
+            "pages": [
+              "guides/long-audio"
+            ]
+          },
+          {
             "group": "Ops",
             "pages": [
               "api/errors",
