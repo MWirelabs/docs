@@ -27,7 +27,7 @@
     "primary": {
       "type": "button",
       "label": "Request access",
-      "href": "mailto:connect@mwirelabs.com"
+      "href": "https://console.mwirelabs.com"
     }
   },
   "seo": {
