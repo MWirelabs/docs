@@ -1,34 +1,14 @@
 ---
 title: Embeddings
-description: NE-Embed weights are live. HTTP on the licensed image.
+description: NE-Embed weights are live. Not served on the hosted API yet.
 ---
 
-<Info>Status: **Live** as [NE-Embed](https://huggingface.co/MWirelabs/ne-embed). HTTP `POST /v1/embeddings` ships on the licensed image, on request.</Info>
+<Info>Status: weights **live** as [NE-Embed](https://huggingface.co/MWirelabs/ne-embed). `POST /v1/embeddings` returns `404 language not served` on the hosted API today. Ships on a licensed image, on request.</Info>
 
-Open weights: `MWirelabs/ne-embed` (CC-BY-4.0). Used by NE-Agent. Not a substitute for Lemka speech.
+Open weights: `MWirelabs/ne-embed` (CC-BY-4.0). Used by NE-Agent.
 
 ```
 POST https://<HOST>/v1/embeddings
 ```
 
-### Auth
-
-```
-Authorization: Bearer <API_KEY>
-```
-
-### Request body
-
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `input` | string or string[] | Yes | Text to embed. |
-| `language` | string | No | Language hint. |
-
-### Response
-
-```json
-{
-  "embeddings": [[0.01, 0.02]],
-  "request_id": "req_8f2a1c"
-}
-```
+Batches are capped at 64 items per request on images that serve it.

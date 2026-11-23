@@ -1,9 +1,9 @@
 ---
 title: Speech (TTS)
-description: Lemka TTS. One path per language.
+description: Lemka TTS. One path per language, Khasi and Garo live.
 ---
 
-<Info>Status: **Live / on request**. Same endpoint for every Lemka voice. English Kokoro on `/speak` is not this product.</Info>
+<Info>Status: **Live** for Khasi (`kha`) and Garo (`grt`). English Kokoro on `/speak` is not this product.</Info>
 
 ```
 POST https://<HOST>/v1/audio/speech/{language}
@@ -19,18 +19,30 @@ Authorization: Bearer <API_KEY>
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `text` | string | Yes | Text in that language. |
-| `format` | string | No | Default `wav`. |
+| `text` | string | Yes | Text in that language. Up to 1000 characters. |
 
 ### Response
 
 ```json
 {
-  "language": "kha",
   "audio_b64": "<base64 wav>",
-  "format": "wav",
-  "request_id": "req_8f2a1c"
+  "duration_sec": 3.2
 }
 ```
 
-`{language}` is one of `kha`, `grt`, `trp`, `lus`, `nag`, `mni`. A code not on your image returns `503 model_unavailable`.
+### Streaming
+
+```
+POST https://<HOST>/v1/audio/speech/{language}/stream
+```
+
+Same body. The response is raw audio bytes sent as they are generated. The sample rate is in the `X-Sample-Rate` header.
+
+### Errors
+
+| Status | `error` |
+|---|---|
+| 400 | `text is empty` |
+| 400 | `text too long` |
+| 404 | `language not served` |
+| 503 | `starting up` |

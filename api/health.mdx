@@ -1,14 +1,16 @@
 ---
 title: GET /health
-description: Liveness probe for the on-prem process.
+description: Readiness probe.
 ---
 
-Not a healthcare or sector API. Load balancers and Docker healthchecks call this.
+Load balancers and Docker healthchecks call this.
 
 ```bash
 curl -s http://<HOST>/health
 ```
 
 ```json
-{ "status": "ok" }
+{ "ready": true }
 ```
+
+While models are loading it returns status 503 with `{ "ready": false, "error": null }`.

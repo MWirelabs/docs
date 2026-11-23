@@ -3,28 +3,18 @@ title: Errors
 description: One error shape, used by every endpoint.
 ---
 
-All endpoints return the same envelope on failure.
+Failures return a status code and a short message.
 
 ```json
-{
-  "error": {
-    "code": "invalid_language",
-    "message": "Language code 'xyz' is not supported.",
-    "request_id": "req_8f2a1c"
-  }
-}
+{ "error": "audio must be 16 kHz mono wav" }
 ```
 
-| HTTP status | `code` | Meaning |
-|---|---|---|
-| 400 | `invalid_request` | Missing or malformed field |
-| 400 | `invalid_language` | Language code not recognised or not supported on this route |
-| 401 | `unauthorized` | Missing or bad API key |
-| 403 | `forbidden` | Key valid, not licensed for this route or language |
-| 404 | `not_found` | Path does not exist on this image |
-| 413 | `payload_too_large` | Audio or text exceeds the configured limit |
-| 429 | `rate_limited` | Too many requests, see [Rate limits](/api/rate-limits) |
-| 500 | `internal_error` | Fault on the box, retry later |
-| 503 | `model_unavailable` | Model not loaded for this language on this image |
+| HTTP status | Meaning |
+|---|---|
+| 400 | Missing or malformed field, or a limit exceeded |
+| 401 | Missing or bad API key |
+| 404 | Language or pair not served on this route |
+| 500 | `model error`, retry later |
+| 503 | `starting up`, the model is still loading. Retry in a few seconds |
 
-Always log `request_id` from an error response. Support requests without it take longer to trace.
+Each endpoint page lists its exact `error` messages.

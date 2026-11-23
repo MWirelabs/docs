@@ -1,9 +1,9 @@
 ---
 title: Translate
-description: Text translation. One endpoint, source and target codes.
+description: Text translation between English and Khasi or Garo.
 ---
 
-<Info>Status: **Live** for Khasi, Garo, and Mizo. Other pairs on request, same `POST /v1/translate`.</Info>
+<Info>Status: **Live** for English to and from Khasi and Garo. Other pairs on request.</Info>
 
 ```
 POST https://<HOST>/v1/translate
@@ -19,24 +19,30 @@ Authorization: Bearer <API_KEY>
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `text` | string | Yes | Source text. |
-| `source` | string | Yes | Language code, e.g. `grt`. |
-| `target` | string | Yes | Language code, e.g. `eng`. |
+| `text` | string | Yes | Source text. Up to 5000 characters. |
+| `source` | string | Yes | `eng`, `kha` or `grt`. |
+| `target` | string | Yes | `eng`, `kha` or `grt`. |
+
+One side of every pair must be `eng`. Khasi to Garo is not served.
 
 ### Response
 
 ```json
 {
-  "source": "grt",
-  "target": "eng",
-  "text": "translated text",
-  "request_id": "req_8f2a1c"
+  "translation": "translated text"
 }
 ```
 
 | Pair | Status |
 |---|---|
-| Khasi ↔ English | Live |
-| Garo ↔ English | Live |
-| Mizo ↔ English | Live |
-| Other listed codes | On request |
+| Khasi to and from English | Live |
+| Garo to and from English | Live |
+
+### Errors
+
+| Status | `error` |
+|---|---|
+| 400 | `text is empty` |
+| 400 | `text too long` |
+| 404 | `language pair not served` |
+| 503 | `starting up` |

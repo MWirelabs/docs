@@ -1,9 +1,9 @@
 ---
 title: Transcriptions (ASR)
-description: Lemka speech to text, one endpoint, six languages.
+description: Lemka speech to text. Khasi and Garo live.
 ---
 
-<Info>Status: **Live / on request**. This route is **Lemka STT** (licensed). Language code selects the model on the box. Legacy [`/speak`](/api/speak) is a Garo-only demo.</Info>
+<Info>Status: **Live** for Khasi (`kha`) and Garo (`grt`). Other languages on request. Legacy [`/speak`](/api/speak) is a Garo-only demo.</Info>
 
 ```
 POST https://<HOST>/v1/audio/transcriptions
@@ -19,19 +19,18 @@ Authorization: Bearer <API_KEY>
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `audio_b64` | string | Yes | Base64 audio. See [Conventions](/api/conventions). |
-| `language` | string | Yes | `kha`, `grt`, `trp`, `lus`, `nag`, `mni`. |
-| `format` | string | No | Input container hint. Defaults to `wav`. |
+| `audio_b64` | string | Yes | Base64 of a 16 kHz mono WAV. |
+| `language` | string | Yes | `kha` or `grt`. |
 
 ### Limits
 
 - Clip length: 0.2 to 120 seconds.
 - Request body: 8 MB.
-- Audio: 16 kHz mono WAV.
+- Audio must be 16 kHz mono WAV.
 
 For longer files, see [Long audio](/guides/long-audio).
 
-No diarization, speaker ID, timestamps or language ID in this contract. Batch only. One language per request.
+No diarization, speaker ID, timestamps or language ID. One language per request.
 
 ### Response
 
@@ -42,15 +41,14 @@ No diarization, speaker ID, timestamps or language ID in this contract. Batch on
 }
 ```
 
-`text` is the transcript. `duration_sec` is the length of the clip you sent.
+`duration_sec` is the length of the clip you sent.
 
-### Language support
+### Errors
 
-| Language | Status |
+| Status | `error` |
 |---|---|
-| Khasi | Live / on request |
-| Garo | Live / on request |
-| Kokborok | Live / on request |
-| Mizo | Live / on request |
-| Nagamese | Live / on request |
-| Meitei | Live / on request |
+| 400 | `audio is not a valid base64 wav` |
+| 400 | `audio must be 16 kHz mono wav` |
+| 400 | `audio length out of range` |
+| 404 | `language not served` |
+| 503 | `starting up` |

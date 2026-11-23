@@ -23,19 +23,15 @@ All endpoints take a language code, not a display name.
 
 - Encoding: base64 in JSON (`audio_b64`), not multipart.
 - Format: 16-bit PCM WAV, 16kHz mono, unless a route says otherwise.
-- Max size: set per license, not a public default.
+- Max request body: 8 MB. ASR clips run 0.2 to 120 seconds.
 
 ### Text
 
 - UTF-8 only. Send Meitei in Bengali or Meitei Mayek script as written; do not transliterate first.
 
-### Shared response fields
+### Live languages
 
-Every successful response includes:
-
-| Field | Type | Description |
-|---|---|---|
-| `request_id` | string | Unique per call. Include this when contacting support. |
+Khasi (`kha`) and Garo (`grt`) are live for speech and translation. Other codes are on request.
 
 ### Status labels
 
