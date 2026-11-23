@@ -23,18 +23,26 @@ Authorization: Bearer <API_KEY>
 | `language` | string | Yes | `kha`, `grt`, `trp`, `lus`, `nag`, `mni`. |
 | `format` | string | No | Input container hint. Defaults to `wav`. |
 
-No diarization or speaker-ID in this contract. Batch only.
+### Limits
+
+- Clip length: 0.2 to 120 seconds.
+- Request body: 8 MB.
+- Audio: 16 kHz mono WAV.
+
+For longer files, see [Long audio](/guides/long-audio).
+
+No diarization, speaker ID, timestamps or language ID in this contract. Batch only. One language per request.
 
 ### Response
 
 ```json
 {
-  "language": "grt",
   "text": "transcribed text here",
-  "duration_sec": 12.4,
-  "request_id": "req_8f2a1c"
+  "duration_sec": 12.4
 }
 ```
+
+`text` is the transcript. `duration_sec` is the length of the clip you sent.
 
 ### Language support
 
