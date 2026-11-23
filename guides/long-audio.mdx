@@ -1,1 +1,48 @@
+---
+title: Long audio
+description: Transcribe 25 to 60+ minute files by chunking client side, with SRT and VTT output.
+---
 
+`POST /v1/audio/transcriptions` takes one short clip per call. For interviews, podcasts and lectures, split the file, send the chunks, and join the text.
+
+### Limits per call
+
+| Item | Limit |
+|---|---|
+| Clip length | 0.2 to 120 seconds |
+| Request body | 8 MB |
+| Audio | 16 kHz mono WAV, base64 in `audio_b64` |
+| Languages | `kha`, `grt` |
+
+The response has `text` and `duration_sec`. There are no timestamps, no language ID and no English. Use one language per file.
+
+### Recipe
+
+1. Convert the file to 16 kHz mono WAV with `ffmpeg`.
+2. Cut it into windows of 18 to 30 seconds. Place each cut at the quietest point so words are not split.
+3. Send each chunk in order. Retry a failed chunk up to three times.
+4. Join the texts. Each chunk's start offset gives its timestamp.
+
+Cutting at silence matters. Fixed cuts split words and raise the error rate.
+
+### Timing
+
+A 60 minute file runs in about 20 to 30 seconds of compute on a single GPU. Send chunks one at a time or a few in parallel.
+
+### Subtitles
+
+Build SRT or VTT from the chunk offsets. Each chunk becomes one cue, starting at its offset and ending at the next chunk's offset. This is chunk level timing, not word level.
+
+```text
+1
+00:00:00,000 --> 00:00:24,310
+First chunk text
+
+2
+00:00:24,310 --> 00:00:49,870
+Second chunk text
+```
+
+<Note>
+Source audio is not kept by this recipe. Delete the converted WAV once the transcript is saved.
+</Note>
