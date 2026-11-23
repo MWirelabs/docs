@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "MWire Labs",
-  "description": "On-prem speech, text, and language AI for Northeast India.",
+  "description": "Speech, text, and language AI for Northeast India. Hosted API and on-prem.",
   "colors": {
     "primary": "#EA580C",
     "light": "#F97316",

@@ -3,7 +3,7 @@ title: NE-Stack docs
 description: On-prem ASR, per-language TTS, and limited text models for Northeast India.
 ---
 
-Region-first speech and text models. Open **NE-ASR** (and other weights) on Hugging Face. **LEMKA**, TTS voices, and the HTTP API ship on a licensed box. There is no public multi-tenant cloud.
+Region-first speech and text models for Northeast India. Use the hosted API from the [console](https://console.mwirelabs.com), run open weights from Hugging Face, or license an on-prem image.
 
 <CardGroup cols={3}>
   <Card title="Speech-to-text" icon="waveform" href="/speech/asr">
@@ -19,10 +19,10 @@ Region-first speech and text models. Open **NE-ASR** (and other weights) on Hugg
     Dockerised models. Data stays on the box.
   </Card>
   <Card title="HTTP API" icon="code" href="/api/overview">
-    Live demo routes now. Versioned `/v1` on request.
+    Hosted at console.mwirelabs.com/v1. Khasi and Garo live.
   </Card>
-  <Card title="Request access" icon="envelope" href="/access">
-    Email connect@mwirelabs.com
+  <Card title="Get access" icon="key" href="/access">
+    Sign up in the console and create a key.
   </Card>
 </CardGroup>
 
@@ -32,11 +32,8 @@ Region-first speech and text models. Open **NE-ASR** (and other weights) on Hugg
   <Card title="Run weights" icon="download" href="/integrations/huggingface">
     Hugging Face checkpoints for local inference.
   </Card>
-  <Card title="Run the API" icon="terminal" href="/api/speak">
-    `GET /health` and `POST /speak` on a licensed box.
+  <Card title="Call the API" icon="terminal" href="/quickstart">
+    Get a key and make your first call.
   </Card>
 </CardGroup>
 
-<Note>
-The current HTTP demo is Garo-first (`POST /speak`). Multi-language `/v1` routes ship with a licensed on-prem image.
-</Note>

@@ -1,34 +1,31 @@
 ---
 title: Quickstart
-description: First inference from Hugging Face, or the on-prem API once approved.
+description: Get a key and make your first call in two minutes.
 ---
 
 <Steps>
-  <Step title="Request access">
-    Open models are on [Hugging Face](https://huggingface.co/MWirelabs). For the API image, [request access](/access) with your use case and languages. Approval is manual, not instant.
+  <Step title="Sign up">
+    Create an account at [console.mwirelabs.com](https://console.mwirelabs.com). Access follows the console's recharge and approval steps.
   </Step>
-  <Step title="Local check (weights)">
+  <Step title="Create an API key">
+    In the console, open Your keys, add an optional label and click Create key. You can hold up to 5 active keys.
+    <Warning>Keep keys on your server. Never put one in a mobile app or web page.</Warning>
+  </Step>
+  <Step title="Make a call">
+    Base URL: `https://console.mwirelabs.com/v1`
     ```bash
-    pip install -U transformers
+    curl https://console.mwirelabs.com/v1/translate \
+      -H "Authorization: Bearer YOUR_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{"text":"Hello, how are you?","source":"eng","target":"kha"}'
     ```
-    Then load the checkpoint named on the model page (ASR, BERT, or MT).
-  </Step>
-  <Step title="Get your API key">
-    Once approved, you receive an API key with the image tag and runbook. Every `/v1` route expects it as:
-    ```
-    Authorization: Bearer <API_KEY>
-    ```
-  </Step>
-  <Step title="Confirm the box is up">
-    ```bash
-    curl -s http://<HOST>/health
-    ```
-    Expected: `{ "status": "ok" }`. This is a liveness probe, not a healthcare API.
   </Step>
   <Step title="Read Conventions, then an endpoint">
-    [Conventions](/api/conventions) covers language codes and audio format. Then pick one: [Transcriptions](/api/transcriptions), [Speech](/api/speech), [Translate](/api/translate), [Embeddings](/api/embeddings).
+    [Conventions](/api/conventions) covers language codes and audio format. Then pick one: [Transcriptions](/api/transcriptions), [Speech](/api/speech), [Translate](/api/translate).
   </Step>
-  <Step title="Read the license">
-    Confirm terms on [Licenses](/licenses/overview) before any redistribution or wrapping.
+  <Step title="Long recordings">
+    For 25 to 60+ minute files, follow [Long audio](/guides/long-audio).
   </Step>
 </Steps>
+
+Open model weights are on [Hugging Face](https://huggingface.co/MWirelabs). For an on-prem image, see [On-prem](/on-prem/overview).
