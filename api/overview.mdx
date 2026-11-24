@@ -3,13 +3,13 @@ title: HTTP API
 description: Four endpoints, versioned under /v1.
 ---
 
-Not a public SaaS. Base URL is the host you license. No self-serve signup, see [Access](/access).
+Base URL: `https://console.mwirelabs.com/v1`. Create a key in the [console](https://console.mwirelabs.com). Licensed on-prem images use your own host.
 
 Read [Conventions](/api/conventions) first, it covers language codes and audio format used by every endpoint below.
 
 | Method | Path | What | Status |
 |---|---|---|---|
-| `GET` | `/health` | Readiness probe | Live |
+| `GET` | `/health` | Readiness probe (on-prem images) | Live |
 | `POST` | `/v1/audio/transcriptions` | [Speech to text](/api/transcriptions) | Live (Khasi, Garo) |
 | `POST` | `/v1/audio/speech/{language}` | [Text to speech](/api/speech) | Live (Khasi, Garo) |
 | `POST` | `/v1/translate` | [Text translation](/api/translate) | Live (Khasi, Garo) |
@@ -19,5 +19,5 @@ Read [Conventions](/api/conventions) first, it covers language codes and audio f
 See [Errors](/api/errors) for the shared error shape and [Rate limits](/api/rate-limits) for throughput. [Changelog](/api/changelog) tracks what moves between planned, beta, and live.
 
 <Warning>
-The current `/speak` demo has no auth and open CORS. Licensed production images require an API key on every `/v1` route and disable audio logging by default.
+The legacy `/speak` demo has no auth and open CORS. Every `/v1` route needs an API key.
 </Warning>

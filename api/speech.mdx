@@ -6,7 +6,7 @@ description: Lemka TTS. One path per language, Khasi and Garo live.
 <Info>Status: **Live** for Khasi (`kha`) and Garo (`grt`). English Kokoro on `/speak` is not this product.</Info>
 
 ```
-POST https://<HOST>/v1/audio/speech/{language}
+POST https://console.mwirelabs.com/v1/audio/speech/{language}
 ```
 
 ### Auth
@@ -33,7 +33,7 @@ Authorization: Bearer <API_KEY>
 ### Streaming
 
 ```
-POST https://<HOST>/v1/audio/speech/{language}/stream
+POST https://console.mwirelabs.com/v1/audio/speech/{language}/stream
 ```
 
 Same body. The response is raw audio bytes sent as they are generated. The sample rate is in the `X-Sample-Rate` header.
